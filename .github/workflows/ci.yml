@@ -97,7 +97,6 @@ jobs:
           cp ./etc/index.html ./static/toontown/sv1.0.6.9
           cp ./etc/index.html ./static/toontown/sv1.0.6.9/content
 
-          cp ./etc/_config.yml ./static
           cp ./README.md ./static
           php ./htdocs/constants.php > ./static/constants.php
 
