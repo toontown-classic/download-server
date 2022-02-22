@@ -87,7 +87,7 @@ jobs:
       - name: Prepare static version of download server
         run: |
           mkdir ./build
-          cp ./htdocs/toontown ./build/toontown
+          cp -a ./htdocs/toontown/. ./build/toontown
           php ./htdocs/constants.php > ./build/constants.html
 
       # Deploy the finalized static download server to Github Pages
