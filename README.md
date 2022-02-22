@@ -1,6 +1,6 @@
 <div align="center">
     <img src="/.github/toontown-logo.png">
-    <h2>Classic Download Server</h2>
+    <h2>sv1.0.6.9 Download Server</h2>
 </div>
 <hr/>
 
