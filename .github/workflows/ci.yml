@@ -92,7 +92,6 @@ jobs:
       # Prepares a static version of the Toontown download server for Github Pages
       - name: Prepare static version of download server
         run: |
-          mkdir ./static
           cp -a ./htdocs/toontown/. ./static/toontown
           cp ./etc/index.html ./static/toontown
           cp ./etc/index.html ./static/toontown/sv1.0.6.9
