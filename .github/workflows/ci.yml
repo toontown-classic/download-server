@@ -1,4 +1,4 @@
-# Primary workflow for staticing, testing, and deploying the download server packages.
+# Primary workflow for building, testing, and deploying the download server packages.
 name: Toontown Download Server CI
 on:
   # Release a new static anytime a release change is published to the repository
