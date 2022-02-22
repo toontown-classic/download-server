@@ -83,6 +83,12 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
+      # Configure PHP for use in the static prep step
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
       # Prepares a static version of the Toontown download server for Github Pages
       - name: Prepare static version of download server
         run: |
