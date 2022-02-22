@@ -2,8 +2,14 @@
 name: Publish Docker image
 on:
   push:
+    branches:
+      - '*'           # matches every branch that doesn't contain a '/'
+      - '*/*'         # matches every branch containing a single '/'
+      - '**'          # matches every branch
+      - '!gh-pages'   # excludes gh-pages
   release:
     types: [published]
+  workflow_dispatch:  # Allow manual deployments
 
 env:
   REGISTRY: ghcr.io
