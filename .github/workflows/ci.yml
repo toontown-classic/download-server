@@ -94,14 +94,11 @@ jobs:
         run: |
           mkdir ./build
           cp -a ./htdocs/toontown/. ./build/toontown
-          for i in ./build/*
-          do
-              if [ -d "$i" ] # if it's a directory
-              then
-                  cp ./etc/index.html "$i"
-              fi
-          done
+          cp ./etc/index.html ./build/toontown
+          cp ./etc/index.html ./build/toontown/sv1.0.6.9
+          cp ./etc/index.html ./build/toontown/sv1.0.6.9/content
 
+          cp ./etc/_config.yml ./build
           cp ./README.md ./build
           php ./htdocs/constants.php > ./build/constants.php
 
