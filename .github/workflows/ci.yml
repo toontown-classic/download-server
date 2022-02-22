@@ -104,8 +104,8 @@ jobs:
 
       # Deploy the finalized static download server to Github Pages
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: helaili/jekyll-action@v2
         with:
-          personal_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./build
-          clean: true
+          jekyll_src: ./build
+          token: ${{ secrets.GH_PAT }}
+          target_branch: 'github-pages'
