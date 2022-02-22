@@ -1,7 +1,7 @@
-# Primary workflow for building, testing, and deploying the download server packages.
+# Primary workflow for staticing, testing, and deploying the download server packages.
 name: Publish Docker image
 on:
-  # Release a new build anytime a release change is published to the repository
+  # Release a new static anytime a release change is published to the repository
   push:
     branches:
       - '*'           # matches every branch that doesn't contain a '/'
@@ -40,7 +40,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       
-      # Authenticate with the Github packages registry prior to building/pushing
+      # Authenticate with the Github packages registry prior to staticing/pushing
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -57,8 +57,8 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
       # Deploy our created Docker images to the supported registries
-      - name: Build and push Docker images
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      - name: static and push Docker images
+        uses: docker/static-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
@@ -92,20 +92,20 @@ jobs:
       # Prepares a static version of the Toontown download server for Github Pages
       - name: Prepare static version of download server
         run: |
-          mkdir ./build
-          cp -a ./htdocs/toontown/. ./build/toontown
-          cp ./etc/index.html ./build/toontown
-          cp ./etc/index.html ./build/toontown/sv1.0.6.9
-          cp ./etc/index.html ./build/toontown/sv1.0.6.9/content
+          mkdir ./static
+          cp -a ./htdocs/toontown/. ./static/toontown
+          cp ./etc/index.html ./static/toontown
+          cp ./etc/index.html ./static/toontown/sv1.0.6.9
+          cp ./etc/index.html ./static/toontown/sv1.0.6.9/content
 
-          cp ./etc/_config.yml ./build
-          cp ./README.md ./build
-          php ./htdocs/constants.php > ./build/constants.php
+          cp ./etc/_config.yml ./static
+          cp ./README.md ./static
+          php ./htdocs/constants.php > ./static/constants.php
 
       # Deploy the finalized static download server to Github Pages
       - name: Deploy to Github Pages
         uses: helaili/jekyll-action@v2
         with:
-          jekyll_src: ./build
+          jekyll_src: ./static
           token: ${{ secrets.GH_PAT }}
           target_branch: 'github-pages'
