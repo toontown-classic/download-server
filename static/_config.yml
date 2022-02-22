@@ -1,4 +1,6 @@
-title: Toontown Download Server
-description: Toontown Download Server for Github Pages
-show_downloads: true
+### Site Settings ###
+title               : Toontown Download Server
+description         : Toontown Download Server for Github Pages
+repository          : toontown-classic/download-server 
+show_downloads      : true
 google_analytics:
