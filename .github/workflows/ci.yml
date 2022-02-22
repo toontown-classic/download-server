@@ -98,7 +98,7 @@ jobs:
 
       # Deploy the finalized static download server to Github Pages
       - name: Deploy to Github Pages
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
