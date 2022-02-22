@@ -24,7 +24,7 @@ env:
 jobs:
   # Publishes the download server Docker images to all supported repositories
   push_to_registries:
-    name: Push Docker image to container registries
+    name: Push Docker Images
 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -94,11 +94,11 @@ jobs:
         run: |
           mkdir ./build
           cp -a ./htdocs/toontown/. ./build/toontown
-          php ./htdocs/constants.php > ./build/constants.html
+          php ./htdocs/constants.php > ./build/constants.php
 
       # Deploy the finalized static download server to Github Pages
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.GH_PAT }}
           publish_dir: ./build
