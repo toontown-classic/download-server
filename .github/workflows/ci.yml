@@ -1,5 +1,5 @@
 # Primary workflow for staticing, testing, and deploying the download server packages.
-name: Publish Docker image
+name: Toontown Download Server CI
 on:
   # Release a new static anytime a release change is published to the repository
   push:
@@ -57,8 +57,8 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       
       # Deploy our created Docker images to the supported registries
-      - name: static and push Docker images
-        uses: docker/static-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      - name: build and push Docker images
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
